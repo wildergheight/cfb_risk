@@ -38,10 +38,6 @@ def sort_dict(d):
     return dict(sorted_dict)
 
 
-# def final_dict(player_dict, total_stars, tasks, percentages):
-#     final_d = {};
-#     for player in dict:
-
 def create_csv(d, file_name):
     df = pd.DataFrame(d)
     df.to_csv(file_name, index=False, header=None)
@@ -58,10 +54,11 @@ current_task = 0
 task_star_percentage = float(tasks[current_task][1]) / 100
 stars_per_task = math.floor(total_stars * task_star_percentage)
 stars_remaining = stars_per_task
+
 for player in range(len(sorted_dict)):
     player_name = list(sorted_dict.keys())[player]
     player_star_value = sorted_dict[player_name]
-    if stars_remaining > 0 or current_task >= number_of_tasks:
+    if stars_remaining > 0:
         final_list.append([player_name, tasks[current_task][0]])
         stars_remaining = stars_remaining - player_star_value
     else:
